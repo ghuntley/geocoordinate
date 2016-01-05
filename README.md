@@ -1,5 +1,6 @@
 ![Icon](https://i.imgur.com/OfoiwTs.png)
-# GeoCoordinate
+# GeoCoordinate [![Build status](https://ci.appveyor.com/api/projects/status/k18x42mpj4bp93rn?svg=true)](https://ci.appveyor.com/project/ghuntley/geocoordinate)
+
 
 GeoCoordinate is a Portable Class Library compatible implementation of System.Device.Location.GeoCoordinate. It is an exact 1:1 API compliant implementation and will be supported until MSFT [sees it fit to embed the type](https://visualstudio.uservoice.com/forums/121579-visual-studio-2015/suggestions/5221530-geocoordinate-class-included-in-portable-class-lib). Which at that point this implementation will cease development/support and you will be able to simply remove this package and everything will still work.
 
