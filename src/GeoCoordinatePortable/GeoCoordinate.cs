@@ -19,7 +19,6 @@ namespace GeoCoordinatePortable
         private double _longitude;
         private double _speed;
         private double _verticalAccuracy;
-        private double _altitude;
 
         /// <summary>
         /// Initializes a new instance of GeoCoordinate that has no data fields set.
