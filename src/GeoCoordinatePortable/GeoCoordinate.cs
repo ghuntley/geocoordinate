@@ -6,18 +6,19 @@ namespace GeoCoordinatePortable
     public class GeoCoordinate : IEquatable<GeoCoordinate>
     {
         public static readonly GeoCoordinate Unknown = new GeoCoordinate();
-        private double _course = double.NaN;
-        private double _horizontalAccuracy = double.NaN;
-        private double _latitude = double.NaN;
-        private double _longitude = double.NaN;
-        private double _speed = double.NaN;
-        private double _verticalAccuracy = double.NaN;
-
+        private double _course;
+        private double _horizontalAccuracy;
+        private double _latitude;
+        private double _longitude;
+        private double _speed;
+        private double _verticalAccuracy;
+        private double _altitude;
 
         // <summary>
         /// Initializes a new instance of GeoCoordinate that has no data fields set.
         /// </summary>
         public GeoCoordinate()
+            : this(double.NaN, double.NaN)
         {
         }
 
@@ -205,14 +206,13 @@ namespace GeoCoordinatePortable
         /// </returns>
         public bool IsUnknown => Equals(Unknown);
 
-
         /// <summary>
         ///     Gets the altitude of the GeoCoordinate, in meters.
         /// </summary>
         /// <returns>
         ///     The altitude, in meters.
         /// </returns>
-        public double Altitude { get; set; } = double.NaN;
+        public double Altitude { get; set; }
 
         /// <summary>
         ///     Determines if the GeoCoordinate object is equivalent to the parameter, based solely on latitude and longitude.
@@ -223,12 +223,16 @@ namespace GeoCoordinatePortable
         /// <param name="other">The GeoCoordinate object to compare to the calling object.</param>
         public bool Equals(GeoCoordinate other)
         {
-            if (other == null)
+            if (ReferenceEquals(other, null))
                 return false;
+
             var num = Latitude;
+
             if (!num.Equals(other.Latitude))
                 return false;
+
             num = Longitude;
+
             return num.Equals(other.Longitude);
         }
 
@@ -242,8 +246,9 @@ namespace GeoCoordinatePortable
         /// <param name="right">The second GeoCoordinate to compare.</param>
         public static bool operator ==(GeoCoordinate left, GeoCoordinate right)
         {
-            if (left == null)
-                return right == null;
+            if (ReferenceEquals(left, null))
+                return ReferenceEquals(right, null);
+
             return left.Equals(right);
         }
 
@@ -275,13 +280,15 @@ namespace GeoCoordinatePortable
             {
                 throw new ArgumentException("Argument latitude or longitude is not a number");
             }
-            var d1 = Latitude*(Math.PI/180.0);
-            var num1 = Longitude*(Math.PI/180.0);
-            var d2 = other.Latitude*(Math.PI/180.0);
-            var num2 = other.Longitude*(Math.PI/180.0) - num1;
-            var d3 = Math.Pow(Math.Sin((d2 - d1)/2.0), 2.0) +
-                     Math.Cos(d1)*Math.Cos(d2)*Math.Pow(Math.Sin(num2/2.0), 2.0);
-            return 6376500.0*(2.0*Math.Atan2(Math.Sqrt(d3), Math.Sqrt(1.0 - d3)));
+
+            var d1 = Latitude * (Math.PI / 180.0);
+            var num1 = Longitude * (Math.PI / 180.0);
+            var d2 = other.Latitude * (Math.PI / 180.0);
+            var num2 = other.Longitude * (Math.PI / 180.0) - num1;
+            var d3 = Math.Pow(Math.Sin((d2 - d1) / 2.0), 2.0) +
+                     Math.Cos(d1) * Math.Cos(d2) * Math.Pow(Math.Sin(num2 / 2.0), 2.0);
+
+            return 6376500.0 * (2.0 * Math.Atan2(Math.Sqrt(d3), Math.Sqrt(1.0 - d3)));
         }
 
         /// <summary>
@@ -305,10 +312,6 @@ namespace GeoCoordinatePortable
         /// <param name="obj">The object to compare the GeoCoordinate to.</param>
         public override bool Equals(object obj)
         {
-            if (!(obj is GeoCoordinate))
-            {
-                return base.Equals(obj);
-            }
             return Equals(obj as GeoCoordinate);
         }
 
