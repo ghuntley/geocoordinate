@@ -3,8 +3,15 @@ using System.Globalization;
 
 namespace GeoCoordinatePortable
 {
+    /// <summary>
+    /// Represents a geographical location that is determined by latitude and longitude
+    /// coordinates. May also include altitude, accuracy, speed, and course information.
+    /// </summary>
     public class GeoCoordinate : IEquatable<GeoCoordinate>
     {
+        /// <summary>
+        /// Represents a <see cref="GeoCoordinate"/> object that has unknown latitude and longitude fields.
+        /// </summary>
         public static readonly GeoCoordinate Unknown = new GeoCoordinate();
         private double _course;
         private double _horizontalAccuracy;
@@ -14,7 +21,7 @@ namespace GeoCoordinatePortable
         private double _verticalAccuracy;
         private double _altitude;
 
-        // <summary>
+        /// <summary>
         /// Initializes a new instance of GeoCoordinate that has no data fields set.
         /// </summary>
         public GeoCoordinate()
