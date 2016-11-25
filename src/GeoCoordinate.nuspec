@@ -1,25 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-    <id>@project@</id>
-    <version>@build.number@</version>
-    <authors>@authors@</authors>
-    <owners>@authors@</owners>
-    <summary>@summary@</summary>
-    <licenseUrl>https://github.com/ghuntley/geocoordinate/blob/master/LICENSE.md</licenseUrl>
-    <projectUrl>https://github.com/ghuntley/geocoordinate</projectUrl>
-    <iconUrl>https://i.imgur.com/OfoiwTs.png</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>@description@</description>
-    <releaseNotes>@releaseNotes@</releaseNotes>
-    <copyright>Copyright Geoffrey Huntley 2016</copyright>
-    <tags>GeoCoordinate GeoCoordinatePortable system.device.location.geocoordinate</tags>
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <version>$$version$$</version>
     <dependencies>
-      <group targetFramework="portable-win81+wpa81">
+      <group targetFramework="netstandard1.1">
+        <dependency id="NETStandard.Library" version="1.6.0" />
       </group>
     </dependencies>
-    <frameworkAssemblies>
-      <frameworkAssembly assemblyName="System" targetFramework="net45" />
-    </frameworkAssemblies>
+    <id>GeoCoordinate</id>
+    <title>GeoCoordinate</title>
+    <description>GeoCoordinate is a portable class library (in v1.1.x) or netstandard v1.1 (from v2.x.x) implementation of System.Device.Location.GeoCoordinate. It is an exact 1:1 API compliant implementation and will be supported until MSFT sees it fit to embed the type. Which at that point this implementation will cease development/support and you will be able to simply remove this package and everything will still work.</description>
+    <summary>GeoCoordinate is a portable class library (in v1.1.x) or netstandard v1.1 (from v2.x.x) implementation of System.Device.Location.GeoCoordinate. It is an exact 1:1 API compliant implementation and will be supported until MSFT sees it fit to embed the type. Which at that point this implementation will cease development/support and you will be able to simply remove this package and everything will still work.</summary>
   </metadata>
+  <files>
+    <file src="bin/Release/netstandard1.1/GeoCoordinatePortable.*" target="lib/netstandard1.1/" />
+    <!-- Source -->
+    <file src="*.cs" target="src" />
+  </files>
 </package>

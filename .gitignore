@@ -41,8 +41,10 @@ TestResult.xml
 dlldata.c
 
 # DNX
-project.lock.json
+*.lock.json
 artifacts/
+*.nuget.props
+*.nuget.targets
 
 *_i.c
 *_p.c
@@ -138,7 +140,7 @@ publish/
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
-# TODO: Comment the next line if you want to checkin your web deploy settings 
+# TODO: Comment the next line if you want to checkin your web deploy settings
 # but database connection strings (with potential passwords) will be unencrypted
 *.pubxml
 *.publishproj
@@ -233,5 +235,7 @@ _Pvt_Extensions
 # Tools
 tools/
 
-# Packaging
-packaging/
+# ReactiveUI
+artifacts/
+src/CommonAssemblyInfo.cs
+src/ReactiveUI.Events/Events_*.cs
