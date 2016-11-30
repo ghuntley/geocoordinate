@@ -15,8 +15,6 @@
       secure: 0g2AqQxgiAIFhqoJbbmEPrJa15Z8U5xYT6vQe43Gocuxbjw74hBAIKbU+Cj65UNd
   build_script:
   - ps: >-
-      ./bootstrap.ps1
-
       ./build.cmd
   artifacts:
   - path: artifacts/*
